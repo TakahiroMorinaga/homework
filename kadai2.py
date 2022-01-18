@@ -2,32 +2,15 @@
 # -*- coding: utf-8 -*-
 
 
-#csvファイルへのアクセス
-
-#from csv import writer
-#data added to the list
-#userdata=["name","UserID","email","age","height"]
-
-#with open("kadai2data.csv","w", encoding="utf-8",newline="")as f_object:
-#   writerObject = writer(f_object)
-#   writerObject.writerow(userdata)
-#   f_object.close()
-
-
-
-
-#UIの設定
 
 import tkinter as tk
 import tkinter.messagebox as msg
 import pandas as pd
 import csv
+import tkinter.ttk as ttk
 
 
-
-#ページ遷移設定
-
-
+#sign up page
 
 def signup_button_pushed_on_canvas2():
 
@@ -44,43 +27,6 @@ def signup_button_pushed_on_canvas2():
         df.to_csv("kadai2data.csv",mode="a",header=False,index=False)
         msg.showinfo("お知らせ","登録が完了しました。")
 
-#ユーザ入力値の保持
-#str_name=tk.StringVar()
-#str_UserID=tk.StringVar()
-#str_email=tk.StringVar()
-#int_age=tk.IntringVar()
-#int_height=Int.StringVar()
-
-
-
-#   dataset =[]
-    
-#    canvas2txt2=tk.Entry(root,width=21) 
-#    dataset.append(canvas2txt2.get())
-    
-
-#    canvas2txt3=tk.Entry(root,width=21)
-#    dataset.append(canvas2txt3.get())
-
-#    canvas2txt4=tk.Entry(root,width=21)
-#    dataset.append(canvas2txt4.get())
-
-#    canvas2txt5=tk.Entry(root,width=21)
-#    dataset.append(canvas2txt5.get())
-
-#    canvas2txt6=tk.Entry(root,width=21)
-#    dataset.append(canvas2txt6.get())
-
-#    with open("kadai2data.csv","a",newline="") as csvFile:
-#        writer=csv.writer(csvFile)
-#       writer.writerow(dataset)
-#        print(dataset)
-
-
- #  return
-
-
-
 
 
 
@@ -92,7 +38,6 @@ def transition_button_signup(widget):
 
 
 
-#sign upページ
     canvas2lbl1=tk.Label(root,text="input your information",fg="black")
     canvas2lbl1.place(x=175,y=10)
     
@@ -126,26 +71,37 @@ def transition_button_signup(widget):
     btn2btn1=tk.Button(canvas2,text="SIGN UP",width=11,height=3,command=signup_button_pushed_on_canvas2,font=("MSゴシック",15,"bold"),fg="green")
     btn2btn1.place(x=170,y=310)
 
-#def signup_button_pushed_on_canvas2(widget):
-#    dataset=["a" ,"b","c"]
-#    dataset.append(canvas2txt2("a"))
-#    dataset.append(canvas2txt3("b"))
-#    dataset.append(canvas2txt4("c"))
-#    dataset.append(canvas2txt5("a"))
-#    dataset.append(canvas2txt6("b"))
-
-#    with open("kadai2data.csv","a",newline="") as csvFile:
-#        writer=csv.writer(csvFile)
-#        writer.writerow(detaset)
-
-#    return
-
 
 #Loginページ
 def transition_button_login(widget):
     widget.place_forget() # canvas(widget)を隠す                          
     canvas3 = tk.Canvas(width=500, height=400)
     canvas3.place(x=0, y=0)
+
+    
+    userInfo="kadai2data.csv"
+    txt1_value=txt1.get()
+    txt2_value=txt2.get()
+
+    with open(userInfo) as f:
+        infoList=csv.reader(f)
+
+        useridInfo = txt1_value
+        mailInfo = txt2_value
+
+        for user in infoList:
+            if user[1] == useridInfo:
+                if user[2] == mailInfo:
+                    canvas3.tkraise()
+                    canvas3lbl2["text"]=user[0]
+                    canvas3lbl4["text"]=user[3]
+                    canvas3lbl5["text"]=user[4]
+                    
+            else:
+                lbl6Error["text"]="error"
+
+
+#logined page when sccess
 
     canvas3lbl1=tk.Label(root,text=" Your information",fg="black")
     canvas3lbl1.place(x=200,y=10)
@@ -172,10 +128,6 @@ def transition_button_login(widget):
     btn3btn1=tk.Button(canvas3,text="Back to Home",width=11, height=3,font=("MSゴシック",15,"bold"),fg="green")
     btn3btn1.place(x=170,y=310)
   
-
-#def  signup_button_pushed_on_canvas2():
-#    print("hello")
-
 
     
     
@@ -207,18 +159,22 @@ lbl4=tk.Label(root,text="User ID",fg="black",font=("MSゴシック",20,"bold"))
 lbl4.pack()
 lbl4.place(x=100,y=180)
 
-lbl5=tk.Label(root,text="Password",fg="black",font=("MSゴシック",20,"bold"))
+lbl5=tk.Label(root,text="email",fg="black",font=("MSゴシック",20,"bold"))
 lbl5.pack()
 lbl5.place(x=100,y=250)
 
+lbl6Error=tk.Label(root,text="")
+lbl6Error.place(x=175,y=140)
+
 #テキストボックス配置
-txt1=tk.Entry(root,width=21)
+txt1=tk.Entry(root,show="*",width=21)
 txt1.pack()
 txt1.place(x=220,y=180)
 
-txt2=tk.Entry(root,show="*",width=21)
+txt2=tk.Entry(root,width=21)
 txt2.pack()
 txt2.place(x=220,y=250)
+
 
 
 
@@ -240,5 +196,5 @@ int_age=tk.StringVar()
 int_height=tk.StringVar()
 
 
-#root.mainloop()
+root.tkraise()
 tk.mainloop()
