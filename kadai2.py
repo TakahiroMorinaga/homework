@@ -72,11 +72,98 @@ def transition_button_signup(widget):
     btn2btn1.place(x=170,y=310)
 
 
+def backhome_button(widget):
+
+    widget.place_forget() # canvas(widget)を隠す                          
+    canvas1=tk.Canvas(width=500,height=400)
+    canvas1.place(x=0,y=0)
+
+    lbl1=tk.Label(root,text="LOGIN Page",fg="black")
+    lbl1.pack()
+    lbl1.place(x=200,y=85)
+
+    lbl2=tk.Label(root,text="Welcome to matcha!",fg="green",width="100",font=("MSゴシック",30,"bold"))
+    lbl2.pack()
+
+    lbl3=tk.Label(root,text="input your information",fg="black")
+    lbl3.pack()
+    lbl3.place(x=175,y=120)
+
+    lbl4=tk.Label(root,text="User ID",fg="black",font=("MSゴシック",20,"bold"))
+    lbl4.pack()
+    lbl4.place(x=100,y=180)
+
+    lbl5=tk.Label(root,text="email",fg="black",font=("MSゴシック",20,"bold"))
+    lbl5.pack()
+    lbl5.place(x=100,y=250)
+
+    lbl6Error=tk.Label(root,text="")
+    lbl6Error.place(x=175,y=140)
+
+#テキストボックス配置
+    txt1=tk.Entry(root,show="*",width=21)
+    txt1.pack()
+    txt1.place(x=220,y=180)
+
+    txt2=tk.Entry(root,width=21)
+    txt2.pack()
+    txt2.place(x=220,y=250)
+
+    btn1=tk.Button(root,text="LOGIN", width=11, height=3,command=lambda:transition_button_login(canvas1),font=("MSゴシック",15,"bold"),fg="green")
+    btn1.pack()
+    btn1.place(x=100,y=310)
+
+
+    btn2=tk.Button(canvas1,text="SIGN UP",width=11, height=3,command=lambda:transition_button_signup(canvas1),font=("MSゴシック",15,"bold"),fg="green")
+    btn2.pack()
+    btn2.place(x=280,y=310)
+
+
+#root.tkraise()
+#tk.mainloop()
+
 #Loginページ
 def transition_button_login(widget):
+
     widget.place_forget() # canvas(widget)を隠す                          
     canvas3 = tk.Canvas(width=500, height=400)
     canvas3.place(x=0, y=0)
+
+
+#    canvas3lbl1=tk.Label(root,text=" Your information",fg="black")
+#    canvas3lbl1.place(x=200,y=10)
+    
+
+#    canvas3lbl2=tk.Label(root,text="Your Name",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl2.place(x=100,y=100)
+    
+
+#    canvas3lbl3=tk.Label(root,text="Your User ID",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl3.place(x=100,y=140)
+   
+
+#    canvas3lbl4=tk.Label(root,text="Your email",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl4.place(x=100,y=180)
+    
+#    canvas3lbl5=tk.Label(root,text="Your age",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl5.place(x=100,y=220)
+    
+#    canvas3lbl6=tk.Label(root,text="Your height",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl6.place(x=100,y=260)
+    
+
+#    btn3btn1=tk.Button(canvas3,text="Back to Home",width=11, command=backhome_button,height=3,font=("MSゴシック",15,"bold"),fg="green")
+#    btn3btn1.place(x=170,y=310)
+
+    lbl6Error=tk.Label(root,text="")
+    lbl6Error.place(x=175,y=140)
+
+ #   widget.place_forget() # canvas(widget)を隠す                          
+ #   canvas3 = tk.Canvas(width=500, height=400)
+ #   canvas3.place(x=0, y=0)
+    btn3btn1=tk.Button(canvas3,text="Back to Home",width=11, command=lambda:backhome_button(canvas1),height=3,font=("MSゴシック",15,"bold"),fg="green")
+    btn3btn1.place(x=170,y=310)
+
 
     
     userInfo="kadai2data.csv"
@@ -92,41 +179,46 @@ def transition_button_login(widget):
         for user in infoList:
             if user[1] == useridInfo:
                 if user[2] == mailInfo:
-                    canvas3.tkraise()
+#                    canvas3.tkraise()
                     canvas3lbl2["text"]=user[0]
-                    canvas3lbl4["text"]=user[3]
-                    canvas3lbl5["text"]=user[4]
+                    canvas3lbl3["text"]=user[1]
+                    canvas3lbl4["text"]=user[2]
+                    canvas3lbl5["text"]=user[3]
+                    canvas3lbl6["text"]=user[4]
                     
             else:
                 lbl6Error["text"]="error"
 
 
+
+
+
 #logined page when sccess
 
-    canvas3lbl1=tk.Label(root,text=" Your information",fg="black")
-    canvas3lbl1.place(x=200,y=10)
+#    canvas3lbl1=tk.Label(root,text=" Your information",fg="black")
+#    canvas3lbl1.place(x=200,y=10)
     
 
-    canvas3lbl2=tk.Label(root,text="Your Name",fg="black",font=("MSゴシック",12,"bold"))
-    canvas3lbl2.place(x=100,y=100)
+#    canvas3lbl2=tk.Label(root,text="Your Name",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl2.place(x=100,y=100)
     
 
-    canvas3lbl3=tk.Label(root,text="Your User ID",fg="black",font=("MSゴシック",12,"bold"))
-    canvas3lbl3.place(x=100,y=140)
+#    canvas3lbl3=tk.Label(root,text="Your User ID",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl3.place(x=100,y=140)
    
 
-    canvas3lbl4=tk.Label(root,text="Your email",fg="black",font=("MSゴシック",12,"bold"))
-    canvas3lbl4.place(x=100,y=180)
+#    canvas3lbl4=tk.Label(root,text="Your email",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl4.place(x=100,y=180)
     
-    canvas3lbl5=tk.Label(root,text="Your age",fg="black",font=("MSゴシック",12,"bold"))
-    canvas3lbl5.place(x=100,y=220)
+#    canvas3lbl5=tk.Label(root,text="Your age",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl5.place(x=100,y=220)
     
-    canvas3lbl6=tk.Label(root,text="Your height",fg="black",font=("MSゴシック",12,"bold"))
-    canvas3lbl6.place(x=100,y=260)
+#    canvas3lbl6=tk.Label(root,text="Your height",fg="black",font=("MSゴシック",12,"bold"))
+#    canvas3lbl6.place(x=100,y=260)
     
 
-    btn3btn1=tk.Button(canvas3,text="Back to Home",width=11, height=3,font=("MSゴシック",15,"bold"),fg="green")
-    btn3btn1.place(x=170,y=310)
+#    btn3btn1=tk.Button(canvas3,text="Back to Home",width=11, height=3,font=("MSゴシック",15,"bold"),fg="green")
+#    btn3btn1.place(x=170,y=310)
   
 
     
