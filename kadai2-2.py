@@ -96,8 +96,7 @@ def backhome_button(widget):
     lbl5.pack()
     lbl5.place(x=100,y=250)
 
-    lbl6Error=tk.Label(root,text="")
-    lbl6Error.place(x=175,y=140)
+    
 
 
 #Loginページ
@@ -106,26 +105,29 @@ def transition_button_login(widget):
     canvas3 = tk.Canvas(width=500, height=400)
     canvas3.place(x=0, y=0)
 
-    canvas3lbl1=tk.Label(root,text=" Your information",fg="black")
+    canvas3lbl1=tk.Label(root,text="",fg="black")
     canvas3lbl1.place(x=200,y=10)
     
 
-    canvas3lbl2=tk.Label(root,text="Error",fg="black",font=("MSゴシック",12,"bold"))
+    canvas3lbl2=tk.Label(root,text="",fg="black",font=("MSゴシック",12,"bold"))
     canvas3lbl2.place(x=100,y=100)
     
 
-    canvas3lbl3=tk.Label(root,text="Error",fg="black",font=("MSゴシック",12,"bold"))
+    canvas3lbl3=tk.Label(root,text="",fg="black",font=("MSゴシック",12,"bold"))
     canvas3lbl3.place(x=100,y=140)
    
 
-    canvas3lbl4=tk.Label(root,text="Error",fg="black",font=("MSゴシック",12,"bold"))
+    canvas3lbl4=tk.Label(root,text="",fg="black",font=("MSゴシック",12,"bold"))
     canvas3lbl4.place(x=100,y=180)
     
-    canvas3lbl5=tk.Label(root,text="Error",fg="black",font=("MSゴシック",12,"bold"))
+    canvas3lbl5=tk.Label(root,text="",fg="black",font=("MSゴシック",12,"bold"))
     canvas3lbl5.place(x=100,y=220)
     
-    canvas3lbl6=tk.Label(root,text="Error",fg="black",font=("MSゴシック",12,"bold"))
+    canvas3lbl6=tk.Label(root,text="",fg="black",font=("MSゴシック",12,"bold"))
     canvas3lbl6.place(x=100,y=260)
+
+    lbl6Error=tk.Label(root,text="")
+    lbl6Error.place(x=175,y=140)
 
     
 
@@ -157,7 +159,8 @@ def transition_button_login(widget):
                     
                     
             else:
-                print("error")
+                lbl6Error["text"]="error"
+                
 
 
 #logined page when sccess
